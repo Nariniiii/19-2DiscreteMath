@@ -33,7 +33,6 @@ int main(int argc, char **argv){
     i++;
     M++;
   }
-  // pclose(fin);
 
   labels[0] = (int*) malloc(sizeof(int) * N);
   labels[1] = (int*) malloc(sizeof(int) * M);
@@ -45,22 +44,18 @@ int main(int argc, char **argv){
   fseek(fin, 0l, SEEK_SET);
   for(i=0; i<N; i++){
     fscanf(fin, "%d", &labels[0][i]);
-    //printf("labels[0][%d]: %d\n", i, labels[0][i]);
   }
 
   for(i = 1; i<=M; i++){
     for(j = 1; j<=N; j++){
       fscanf(fin, "%d", &num[i][j]);
-      //printf("num[%d][%d]: %d\n", i, j, num[i][j]);
     }
     fscanf(fin, "%d", &labels[1][k]);
-    //printf("labels[1][%d]: %d\n", k, labels[1][k]);
     k++;
   }
   fclose(fin);
 
   //////////////// making formula //////////////////
-
   FILE* fp = fopen("formula", "w");
   int x, y, n; // cols, row
 
@@ -72,7 +67,6 @@ int main(int argc, char **argv){
   //  Q1: All numbers in max spaces are between 0 to 1.
   for (y = 1 ; y <= M ; y++)
   	for (x = 1 ; x <= N ; x++)
-  		//fprintf(fp, "(assert (and (<= a%d_%d 1) (<= 0 a%d_%d)))\n", y, x, y, x);
       fprintf(fp, "(assert (or (= a%d_%d 1) (= 0 a%d_%d)))\n", y, x, y, x);
 
 
@@ -124,12 +118,14 @@ int main(int argc, char **argv){
   if(strcmp(buf, "unsat") == 0) printf("No solution\n");
   else {
     fscanf(fin, "%s", buf);
+
     while(!feof(fin)){
       fscanf(fin, "%s %s %s %s %s", b, s, b, b, t);
       sscanf(s, "a%d_%d", &i, &j);
       if(t[0] - '0' == 0) board[i-1][j-1] = 1;
       else if(t[0] - '0' == 1) board[i-1][j-1] = 0;
     }
+    fclose(fin);
 
     for(i=0; i<M; i++){
       for(j=0; j<N; j++) printf("%d ", board[i][j]);
@@ -144,10 +140,8 @@ int main(int argc, char **argv){
   free(labels[0]);
   free(labels[1]);
 
-  for(i = 0; i <= M; i++) free(board[i]);
+  for(i = 0; i < M; i++) free(board[i]);
   free(board);
-
-  fclose(fin);
 
   return 0;
 }
