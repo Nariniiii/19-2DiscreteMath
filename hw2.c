@@ -134,8 +134,8 @@ int main(int argc, char **argv){
     while(!feof(fin)){
       fscanf(fin, "%s %s %s %s %s", b, s, b, b, t);
       sscanf(s,"a%d/%d", &i, &j);
-      if(strcmp(t[0], '0') == 0) board[i-1][j-1] = 1;
-      else if(strcmp(t[0], '1') == 0) board[i-1][j-1] = 0;
+      if(t[0] - '0' == 0) board[i-1][j-1] = 1;
+      else if(t[0] - '0' == 1) board[i-1][j-1] = 0;
     }
 
     for(i=0; i<M; i++){
