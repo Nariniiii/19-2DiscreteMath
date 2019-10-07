@@ -123,7 +123,6 @@ int main(int argc, char **argv){
   char b[128];
   char s[128];
   char t[128];
-  int number;
 
   int** board = (int**) malloc(sizeof(int*) * M);
   for(i = 0; i < M; i++) {
@@ -137,8 +136,8 @@ int main(int argc, char **argv){
     while(!feof(fin)){
       fscanf(fin, "%s %s %s %s %s", b, s, b, b, t);
       sscanf(s,"a%d/%d", &i, &j);
-      number = atoi(strtok(t, ")"));
-      board[i-1][j-1] = number;
+      if(0 == atoi(strtok(t, ")"))) board[i-1][j-1] = 1;
+      else if(1 == atoi(strtok(t, ")"))) board[i-1][j-1] = 0;
     }
 
     for(i=0; i<M; i++){
