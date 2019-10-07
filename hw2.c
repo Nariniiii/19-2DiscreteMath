@@ -25,7 +25,6 @@ int main(int argc, char **argv){
     N++;
     splitPtr = strtok(NULL, " ");
   }
-  printf("N: %d\n", N);
 
   i = 1;
   while(1){
@@ -34,7 +33,6 @@ int main(int argc, char **argv){
     i++;
     M++;
   }
-  printf("M: %d\n", M);
   // pclose(fin);
 
   labels[0] = (int*) malloc(sizeof(int) * N);
@@ -118,7 +116,7 @@ int main(int argc, char **argv){
 
 
 ///////////print result
-  fin = popen("z3 formula","r");
+  fin = popen("z3 formula", "r");
   char buf[128];
   char b[128];
   char s[128];
@@ -132,12 +130,12 @@ int main(int argc, char **argv){
   fscanf(fin, "%s", buf);
   if(strcmp(buf, "unsat") == 0) printf("No solution\n");
   else {
-    fscanf(fin,"%s",buf);
+    fscanf(fin, "%s", buf);
     while(!feof(fin)){
       fscanf(fin, "%s %s %s %s %s", b, s, b, b, t);
       sscanf(s,"a%d/%d", &i, &j);
-      if(0 == atoi(strtok(t, ")"))) board[i-1][j-1] = 1;
-      else if(1 == atoi(strtok(t, ")"))) board[i-1][j-1] = 0;
+      if(strcmp(t[0], '0') == 0) board[i-1][j-1] = 1;
+      else if(strcmp(t[0], '1') == 0) board[i-1][j-1] = 0;
     }
 
     for(i=0; i<M; i++){
