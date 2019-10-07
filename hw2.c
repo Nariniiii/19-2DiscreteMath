@@ -108,13 +108,6 @@ int main(int argc, char **argv){
   fprintf(fp, "(check-sat)\n(get-model)\n");
 	fclose(fp);
 
-  for(i = 0; i <= M; i++) free(num[i]);
-  free(num);
-  free(labels[0]);
-  free(labels[1]);
-
-
-
 ///////////print result
   fin = popen("z3 formula", "r");
   char buf[128];
@@ -133,7 +126,7 @@ int main(int argc, char **argv){
     fscanf(fin, "%s", buf);
     while(!feof(fin)){
       fscanf(fin, "%s %s %s %s %s", b, s, b, b, t);
-      sscanf(s,"a%d/%d", &i, &j);
+      sscanf(s, "a%d_%d", &i, &j);
       if(t[0] - '0' == 0) board[i-1][j-1] = 1;
       else if(t[0] - '0' == 1) board[i-1][j-1] = 0;
     }
@@ -145,6 +138,11 @@ int main(int argc, char **argv){
     printf("\n");
   }
 
+
+  for(i = 0; i <= M; i++) free(num[i]);
+  free(num);
+  free(labels[0]);
+  free(labels[1]);
 
   for(i = 0; i <= M; i++) free(board[i]);
   free(board);
