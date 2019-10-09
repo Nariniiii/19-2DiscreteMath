@@ -7,7 +7,7 @@ First, clone this repository and enter this instruction in peace server
 ~~~
 After that, Makefile builds the program; 
 <br>  
-_hw_ (Number Cross)<br> 
+  _hw_ (Number Cross)<br> 
 <br>
 Then type the input filename next to the program name
 ~~~
