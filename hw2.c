@@ -60,7 +60,7 @@ int main(int argc, char **argv){
     for(j = 1; j<=M; j++){
       sum += num[i][j];
     }
-    labels[0][i] -= sum;
+    labels[0][i-1] -= sum;
   }
 
   fclose(fin);
