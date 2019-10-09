@@ -8,7 +8,7 @@ First, clone this repository and enter this instruction in peace server
 After that, Makefile builds the program; 
 
 
-_hw_ (Sudoku*)<br>
+_hw_ (Number Cross)<br> 
 
 
 Then type the input filename next to the program name
