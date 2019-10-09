@@ -111,7 +111,7 @@ int main(int argc, char **argv){
   fprintf(fp, "(check-sat)\n(get-model)\n");
 	fclose(fp);
 
-///////////print result
+///////////printing result
   fin = popen("z3 formula", "r");
   char buf[128];
   char b[128];
@@ -131,8 +131,6 @@ int main(int argc, char **argv){
     while(!feof(fin)){
       fscanf(fin, "%s %s %s %s %s", b, s, b, b, t);
       sscanf(s, "a%d_%d", &i, &j);
-      //if(t[0] - '0' == 0) board[i-1][j-1] = 1;
-      //else if(t[0] - '0' == 1) board[i-1][j-1] = 0;
       board[i-1][j-1] = t[0] - '0';
     }
     fclose(fin);
