@@ -9,6 +9,7 @@ int main(int argc, char **argv){
   int** num; //a1/1부터 aM/N까지 값을 저장
   int N = 0, M = 0;
   int i = 0, j = 0, k = 0;
+  int sum = 0;
   char* splitPtr;
 
 
@@ -53,6 +54,15 @@ int main(int argc, char **argv){
     fscanf(fin, "%d", &labels[1][k]);
     k++;
   }
+
+  for(i = 1; i<=N; i++){
+    sum = 0;
+    for(j = 1; j<=M; j++){
+      sum += num[i][j];
+    }
+    labels[0][i] -= sum;
+  }
+
   fclose(fin);
 
   //////////////// making formula //////////////////
@@ -90,7 +100,7 @@ int main(int argc, char **argv){
     fprintf(fp, "(= ");
     for(i=1; i<=N-1; i++) fprintf(fp, "(+ ");
   	for (y = 1 ; y <= M ; y++){
-      fprintf(fp, "(* (not a%d_%d) %d)", y, x, num[y][x]);
+      fprintf(fp, "(* a%d_%d %d)", y, x, num[y][x]);
       if(y != 1) fprintf(fp, ") ");
     }
     fprintf(fp, "%d)", labels[0][x-1]);
