@@ -55,12 +55,12 @@ int main(int argc, char **argv){
     k++;
   }
 
-  for(i = 1; i<=N; i++){
+  for(j = 1; j<=N; j++){
     sum = 0;
-    for(j = 1; j<=M; j++){
+    for(i = 1; i<=M; i++){
       sum += num[i][j];
     }
-    labels[0][i-1] = sum - labels[0][i-1];
+    labels[0][j-1] = sum - labels[0][j-1];
   }
 
   fclose(fin);
