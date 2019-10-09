@@ -8,7 +8,7 @@ int main(int argc, char **argv){
   int* labels[2]; //레이블 저장; [0]가로, [1]세로 레이블
   int** num; //a1/1부터 aM/N까지 값을 저장
   int N = 0, M = 0;
-  int i = 0, j = 0, k = 0;
+  int i = 0, j = 0;
   int sum = 0;
   char* splitPtr;
 
@@ -51,8 +51,7 @@ int main(int argc, char **argv){
     for(j = 1; j<=N; j++){
       fscanf(fin, "%d", &num[i][j]);
     }
-    fscanf(fin, "%d", &labels[1][k]);
-    k++;
+    fscanf(fin, "%d", &labels[1][i-1]);
   }
 
   for(i = 1; i<=M; i++){
@@ -60,7 +59,7 @@ int main(int argc, char **argv){
     for(j = 1; j<=N; j++){
       sum += num[i][j];
     }
-    labels[1][j-1] = sum - labels[1][j-1];
+    labels[1][i-1] = sum - labels[1][i-1];
   }
 
   fclose(fin);
