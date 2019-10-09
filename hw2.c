@@ -55,12 +55,12 @@ int main(int argc, char **argv){
     k++;
   }
 
-  for(j = 1; j<=N; j++){
+  for(i = 1; i<=M; i++){
     sum = 0;
-    for(i = 1; i<=M; i++){
+    for(j = 1; j<=N; i++){
       sum += num[i][j];
     }
-    labels[0][j-1] = sum - labels[0][j-1];
+    labels[1][j-1] = sum - labels[1][j-1];
   }
 
   fclose(fin);
@@ -132,8 +132,9 @@ int main(int argc, char **argv){
     while(!feof(fin)){
       fscanf(fin, "%s %s %s %s %s", b, s, b, b, t);
       sscanf(s, "a%d_%d", &i, &j);
-      if(t[0] - '0' == 0) board[i-1][j-1] = 1;
-      else if(t[0] - '0' == 1) board[i-1][j-1] = 0;
+      //if(t[0] - '0' == 0) board[i-1][j-1] = 1;
+      //else if(t[0] - '0' == 1) board[i-1][j-1] = 0;
+      board[i-1][j-1] = t[0] - '0';
     }
     fclose(fin);
 
