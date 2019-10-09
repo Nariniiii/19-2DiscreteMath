@@ -57,7 +57,7 @@ int main(int argc, char **argv){
 
   for(i = 1; i<=M; i++){
     sum = 0;
-    for(j = 1; j<=N; i++){
+    for(j = 1; j<=N; j++){
       sum += num[i][j];
     }
     labels[1][j-1] = sum - labels[1][j-1];
