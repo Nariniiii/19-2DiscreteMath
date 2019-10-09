@@ -1,6 +1,6 @@
 # 19-2 DiscreteMath
 ## 21800001 Narin Kang
-### How to build and run our program
+### How to build and run the program
 First, clone this repository and enter this instruction in peace server
 ~~~
 ~@peace:~/19-2DiscreteMath$   make
