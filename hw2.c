@@ -90,7 +90,7 @@ int main(int argc, char **argv){
     fprintf(fp, "(= ");
     for(i=1; i<=N-1; i++) fprintf(fp, "(+ ");
   	for (y = 1 ; y <= M ; y++){
-      fprintf(fp, "(* (not a%d_%d) %d)", y, x, num[y][x]);
+      fprintf(fp, "(* a%d_%d %d)", y, x, num[y][x]);
       if(y != 1) fprintf(fp, ") ");
     }
     fprintf(fp, "%d)", labels[0][x-1]);
